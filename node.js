@@ -1,22 +1,16 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const studentRoutes = require('./routes/student');
 
-// Import the HTTP module
-const http = require('http');
-
-// Define the host and port
-const host = 'localhost';
-const port = 2000;
-
-// Create an HTTP server
-const server = http.createServer((req, res) => {
-  // Set the response header
-  res.statusCode = 200; // 200 OK
-  res.setHeader('Content-Type', 'text/plain');
-
-  // Send the response body
-  res.end('Hello, World!\n');
+const app = express();
+const PORT = 2024;
+app.get('/', (req, res) => {
+    res.send('Welcome to the Express Server!');
 });
 
-// Start the server and listen on the defined host and port
-server.listen(port, host, () => {
-  console.log(`Server running at http://${host}:${port}/`);
+app.use(bodyParser.json()); // Parse JSON bodies
+app.use('/api/students', studentRoutes); // Use student routes
+
+app.listen(PORT, () => {
+    console.log(Server running on http://localhost:${PORT});
 });
