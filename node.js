@@ -12,5 +12,5 @@ app.use(bodyParser.json()); // Parse JSON bodies
 app.use('/api/students', studentRoutes); // Use student routes
 
 app.listen(PORT, () => {
-    console.log(Server running on http://localhost:${PORT});
+    console.log('Server running on http://localhost:${PORT}');
 });
